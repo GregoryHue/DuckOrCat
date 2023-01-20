@@ -34,7 +34,25 @@ Run:
 cd app && scrapy crawl ducks
 ```
 
-This will download pictures, depending which website you have put in `app/app/spiders/ducks.py` in `allowed_domains` and `start_urls`. You can try with `https://unsplash.com/s/photos/duck`. The pictures will be available in `app/images/`.
+This will download pictures, depending which website you have put in `app/downloader/spiders/ducks.py` in `allowed_domains` and `start_urls`. You can try with `https://unsplash.com/s/photos/duck`. The pictures will be available in `app/images/`.
+
+Some scripts are available in `app/tools/`:
+
+* ``delete_duplicate.py``: delete every picture duplicates in a folder.
+* ``rename.py``: rename every pictures of a folder following a pattern.
+* ``resize.py``: to save on storage and RAM, resize every pictures to be maximum 1024 pixels of width and height.
+
+To use any of them :
+
+```bash
+cd app/tools/ && python3 [script_name]
+```
+
+To label pictures, I recommend using `make-sense` (see references):
+
+```bash
+cd app/tools/ && git clone https://github.com/SkalskiP/make-sense.git && cd make-sense && npm install && npm start
+```
 
 ## Versions
 
@@ -56,3 +74,4 @@ requirements.txt
 * [Scrapy](https://scrapy.org/)
 * [Item Pipeline](https://docs.scrapy.org/en/latest/topics/item-pipeline.html)
 * [Pillow + scrapy = sometimes cannot identify image file](https://stackoverflow.com/questions/30114305/pillow-scrapy-sometimes-cannot-identify-image-file)
+* [GitHub - SkalskiP / make-sense](https://github.com/SkalskiP/make-sense)

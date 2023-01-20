@@ -7,10 +7,10 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'app'
+BOT_NAME = 'downloader'
 
-SPIDER_MODULES = ['app.spiders']
-NEWSPIDER_MODULE = 'app.spiders'
+SPIDER_MODULES = ['downloader.spiders']
+NEWSPIDER_MODULE = 'downloader.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -92,7 +92,7 @@ REQUEST_FINGERPRINTER_IMPLEMENTATION = '2.7'
 
 TWISTED_REACTOR = 'twisted.internet.asyncioreactor.AsyncioSelectorReactor'
 
-ITEM_PIPELINES = {'app.pipelines.AppPipeline': 1}
+ITEM_PIPELINES = {'downloader.pipelines.AppPipeline': 1}
 
 IMAGES_STORE = 'images'
 

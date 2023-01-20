@@ -7,3 +7,5 @@ env/
 images**/
 
 __init__.py
+
+make-sense/
