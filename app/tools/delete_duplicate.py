@@ -5,6 +5,7 @@ from PIL import Image
 import os, sys
 import hashlib
 
+
 def file_hash(file_path):
     with open(file_path, "rb") as f:
         return hashlib.sha256(f.read()).hexdigest()
@@ -22,9 +23,7 @@ removed = 0
 
 for item in dirs:
     if os.path.isfile(PATH+item):
-        f, e = os.path.splitext(PATH+item)
         print(str(i + 1) + ' images out of ' + str(j) + ' \t| ', end='')
-        
         hash = file_hash(PATH+item)
         print(hash, '\t| name: ', item, end='')
         if hash in hash_codes:
@@ -37,4 +36,3 @@ for item in dirs:
         i = i +1
 
 print('\nRemoved ' +str(removed) + ' duplicates.')
-
