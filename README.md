@@ -1,4 +1,4 @@
-# DuckPicturesDownloader
+# DuckDatasetManager
 
 A Scrapy project to massively download pictures of ducks that will be later used to train a machine learning model.
 
@@ -6,7 +6,7 @@ A Scrapy project to massively download pictures of ducks that will be later used
 
 Get into the project folder:
 ```bash
-cd DuckPicturesDownloader
+cd DuckDatasetManager
 ```
 
 Create a new environment:
