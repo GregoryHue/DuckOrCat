@@ -1,12 +1,12 @@
-# DuckDatasetManager
+# DOCDatasetManager
 
-A Scrapy project to massively download pictures of ducks that will be later used to train a machine learning model.
+Python/Scrapy project that helps with DOC - Duck Or Cat.
 
 ## Project setup
 
 Get into the project folder:
 ```bash
-cd DuckDatasetManager
+cd DOCDatasetManager
 ```
 
 Create a new environment:
