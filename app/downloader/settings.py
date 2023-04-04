@@ -92,7 +92,7 @@ REQUEST_FINGERPRINTER_IMPLEMENTATION = '2.7'
 
 TWISTED_REACTOR = 'twisted.internet.asyncioreactor.AsyncioSelectorReactor'
 
-ITEM_PIPELINES = {'downloader.pipelines.AppPipeline': 1}
+ITEM_PIPELINES = {'downloader.pipelines.Pipeline': 1}
 
 IMAGES_STORE = 'images'
 

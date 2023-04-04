@@ -10,13 +10,13 @@ from itemadapter import ItemAdapter
 from PIL import Image, UnidentifiedImageError
 import requests
 from io import BytesIO
-import os, os.path
+import os
+import os.path
 from .settings import IMAGES_STORE
 
-print(IMAGES_STORE)
 
-class AppPipeline( object ):
-    def process_item( self, item, spider ):
+class Pipeline(object):
+    def process_item(self, item, spider):
         error = []
         folder_exists = os.path.exists(IMAGES_STORE)
         if not folder_exists:
@@ -24,13 +24,13 @@ class AppPipeline( object ):
         _, _, files = next(os.walk(IMAGES_STORE))
         i = len(files)
         for image in item['image_urls']:
-            try:            
+            try:
                 response = requests.get(image)
                 img = Image.open(BytesIO(response.content))
                 img = img.convert('RGB')
                 if img.height > 200 and img.width > 200:
-                    path = IMAGES_STORE + '/' + 'Duck_' + str(i) + '.jpg'
-                    img.save( path, optimize=True, quality=85 )
+                    path = IMAGES_STORE + '/' + spider.name + '_' + str(i) + '.jpeg'
+                    img.save(path, optimize=True, quality=85)
                     i = i + 1
             except UnidentifiedImageError:
                 print('error')

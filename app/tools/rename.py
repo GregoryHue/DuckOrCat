@@ -4,8 +4,8 @@
 from PIL import Image
 import os, sys
 
-RENAME = 'Duck_'
-EXTENSION = '.jpg'
+RENAME = 'cat_'
+EXTENSION = '.jpeg'
 PATH = "../images/"
 
 dirs = os.listdir( PATH )
