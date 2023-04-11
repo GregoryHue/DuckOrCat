@@ -1,12 +1,12 @@
 # DOCDatasetManager
 
-Python/Scrapy project that helps with DOC - Duck Or Cat. Duck or Cat is a binary classification model. It classifies pictures of ducks and cats. 
+Duck or Cat is a binary classification model. It classifies pictures of ducks and cats. A Scrapy project is available to manage your dataset.
 
 ## Project setup
 
 Get into the project folder:
 ```bash
-cd DOCDatasetManager
+cd DuckOrCat
 ```
 
 Create a new environment:
@@ -31,7 +31,7 @@ pip install -r requirements.txt
 Run:
 
 ```bash
-cd app && scrapy crawl ducks
+cd app && scrapy crawl [duck|cat]
 ```
 
 This will download pictures, depending which website you have put in `app/downloader/spiders/ducks.py` in `allowed_domains` and `start_urls`. You can try with `https://unsplash.com/s/photos/duck`. The pictures will be available in `app/images/`.
@@ -46,12 +46,6 @@ To use any of them :
 
 ```bash
 cd app/tools/ && python3 [script_name]
-```
-
-To label pictures, I recommend using `make-sense` (see references):
-
-```bash
-cd app/tools/ && git clone https://github.com/SkalskiP/make-sense.git && cd make-sense && npm install && npm start
 ```
 
 ## Versions
