@@ -5,12 +5,14 @@ from PIL import Image
 import os, sys
 import hashlib
 
+from .settings import IMAGES_STORE
+
 
 def file_hash(file_path):
     with open(file_path, "rb") as f:
         return hashlib.sha256(f.read()).hexdigest()
 
-PATH = "../images/"
+PATH = "../" + IMAGES_STORE
 
 dirs = os.listdir( PATH )
 

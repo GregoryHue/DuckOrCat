@@ -94,7 +94,7 @@ TWISTED_REACTOR = 'twisted.internet.asyncioreactor.AsyncioSelectorReactor'
 
 ITEM_PIPELINES = {'downloader.pipelines.Pipeline': 1}
 
-IMAGES_STORE = 'images'
+IMAGES_STORE = 'dataset'
 
 DOWNLOAD_DELAY = 2  # delay in downloading images
 

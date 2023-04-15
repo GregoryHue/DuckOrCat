@@ -5,8 +5,6 @@
 
 
 # useful for handling different item types with a single interface
-from itemadapter import ItemAdapter
-
 from PIL import Image, UnidentifiedImageError
 import requests
 from io import BytesIO

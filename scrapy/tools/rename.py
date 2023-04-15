@@ -3,10 +3,11 @@
 
 from PIL import Image
 import os, sys
+from .settings import IMAGES_STORE
 
 RENAME = 'cat_'
 EXTENSION = '.jpeg'
-PATH = "../images/"
+PATH = "../" + IMAGES_STORE
 
 dirs = os.listdir( PATH )
 
