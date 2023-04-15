@@ -1,4 +1,4 @@
-# DOCDatasetManager
+# DuckOrCat
 
 Duck or Cat is a binary classification model. It classifies pictures of ducks and cats. A Scrapy project is available to manage your dataset.
 
@@ -31,10 +31,8 @@ pip install -r requirements.txt
 Run:
 
 ```bash
-cd app && scrapy crawl [duck|cat]
+cd scrapy && scrapy crawl [duck|cat]
 ```
-
-This will download pictures, depending which website you have put in `app/downloader/spiders/ducks.py` in `allowed_domains` and `start_urls`. You can try with `https://unsplash.com/s/photos/duck`. The pictures will be available in `app/images/`.
 
 Some scripts are available in `app/tools/`:
 
@@ -45,7 +43,7 @@ Some scripts are available in `app/tools/`:
 To use any of them :
 
 ```bash
-cd app/tools/ && python3 [script_name]
+cd scrapy/tools/ && python3 [script_name]
 ```
 
 ## Versions
@@ -56,8 +54,8 @@ cd app/tools/ && python3 [script_name]
 ## Structure
 
 ```
-app/
-dataset/
+scrapy/
+jupyter/
 env/
 .gitignore
 README.md
