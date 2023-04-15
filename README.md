@@ -4,7 +4,40 @@ Duck or Cat is a binary classification model. It classifies pictures of ducks an
 
 ## Project setup
 
-### Miniconda installation:
+### Install CUDA drivers on Windows 11:
+
+*empty for now*
+
+### Install CuDNN on WSL2:
+
+Find the correct version of cuDNN [here](https://developer.nvidia.com/rdp/cudnn-download) then run:
+
+```bash
+wget https://developer.nvidia.com/downloads/compute/cudnn/secure/8.9.0/local_installers/12.x/cudnn-local-repo-ubuntu2204-8.9.0.131_1.0-1_amd64.deb/
+sudo dpkg -i cudnn-local-repo-ubuntu2204-8.9.0.131_1.0-1_amd64.deb
+sudo cp /var/cudnn-local-repo-ubuntu2204-8.9.0.131/cudnn-local-D7522631-keyring.gpg /usr/share/keyrings/
+sudo apt-get update
+sudo apt-get -y install libcudnn8 libcudnn8-dev
+```
+
+### Install CUDA on WSL2:
+
+Delete the old key:
+
+```bash
+sudo apt-key del 7fa2af80
+```
+
+Find the correct version of CUDA [here](https://developer.nvidia.com/cuda-downloads) then run:
+
+```bash
+wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-keyring_1.0-1_all.deb
+sudo dpkg -i cuda-keyring_1.0-1_all.deb
+bsudo apt-get update
+sudo apt-get -y install cuda
+```
+
+### Install Miniconda:
 
 Get the correct version of Miniconda [here](https://docs.conda.io/en/latest/miniconda.html) and install it:
 
@@ -56,7 +89,7 @@ conda install -c conda-forge cudatoolkit=11.8.0
 
 Install required librairies:
 ```bash
-pip install -r requirements.txt
+cd dev/DuckOrCat/ && pip install -r requirements.txt
 ```
 
 Set the path variables:
@@ -100,7 +133,7 @@ cd scrapy/tools/ && python3 [script_name]
 
 ## Versions
 
-* Windows 11 and WSL2 (Ubuntu 20.04.5)
+* Windows 11 and WSL2 (Ubuntu 22.04.2 LTS)
 * Python 3.9
 * Scrapy 2.7.1
 * Tensorflow 2.12
