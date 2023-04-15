@@ -19,6 +19,9 @@ class Pipeline(object):
         folder_exists = os.path.exists(IMAGES_STORE)
         if not folder_exists:
             os.makedirs(IMAGES_STORE)
+        folder_exists = os.path.exists(IMAGES_STORE + '/' + spider.name.capitalize())
+        if not folder_exists:
+            os.makedirs(IMAGES_STORE + '/' + spider.name.capitalize())
         _, _, files = next(os.walk(IMAGES_STORE))
         i = len(files)
         for image in item['image_urls']:
@@ -27,7 +30,7 @@ class Pipeline(object):
                 img = Image.open(BytesIO(response.content))
                 img = img.convert('RGB')
                 if img.height > 200 and img.width > 200:
-                    path = IMAGES_STORE + '/' + spider.name + '_' + str(i) + '.jpeg'
+                    path = IMAGES_STORE + '/'+ spider.name.capitalize() + '/' + spider.name + '_' + str(i) + '.jpeg'
                     img.save(path, optimize=True, quality=85)
                     i = i + 1
             except UnidentifiedImageError:
