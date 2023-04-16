@@ -9,7 +9,7 @@ env/
 **/checkpoints/
 **/media/**.**
 
-jupyter/model.h5
+**/model.h5
 
 __init__.py
 
