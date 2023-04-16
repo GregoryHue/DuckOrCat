@@ -5,6 +5,11 @@ __pycache__/
 env/
 
 **/dataset/**/
+**/.ipynb_checkpoints/
+**/checkpoints/
+**/media/**.**
+
+jupyter/model.h5
 
 __init__.py
 

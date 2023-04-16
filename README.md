@@ -101,22 +101,40 @@ echo 'CUDNN_PATH=$(dirname $(python -c "import nvidia.cudnn;print(nvidia.cudnn._
 echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/:$CUDNN_PATH/lib' >> $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
 ```
 
+### Install Flyctl (optional):
+
+If you ever wish to push to production, install flyctl with:
+
+```bash
+curl -L https://fly.io/install.sh | sh
+export FLYCTL_INSTALL="/home/$USER/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
+```
+
 ## Usage
+
+### Flask
+
+To develop the web interface, get into the `flask/` folder and run:
+
+```bash
+flask --app  main.py --debug run
+```
 
 ### Jupyter
 
-To develop on the model, get into the `jupyter` folder and run `jupyter-lab`:
+To develop on the model, get into the `jupyter/` folder and run:
 
 ```bash
-cd jupyter && jupyter-lab
+jupyter-lab
 ```
 
 ### Scrapy
 
-To download picture of ducks or cats, get into the `scrapy` folder and make a crawl:
+To download picture of ducks or cats, get into the `scrapy/` folder and run:
 
 ```bash
-cd scrapy && scrapy crawl [duck|cat]
+scrapy crawl [duck|cat]
 ```
 
 Some scripts are available in `scrapy/tools/`:
@@ -125,16 +143,17 @@ Some scripts are available in `scrapy/tools/`:
 * `rename.py`: rename every pictures of a folder following a pattern.
 * `resize.py`: to save on storage and RAM, resize every pictures to be a maximum of 1024 pixels of width and height.
 
-To use any of them :
+To use any of them, get into the `scrapy/tools/` and run:
 
 ```bash
-cd scrapy/tools/ && python3 [script_name]
+python3 [script_name]
 ```
 
 ## Versions
 
 * Windows 11 and WSL2 (Ubuntu 22.04.2 LTS)
 * Python 3.9
+* Flask 2.2.3
 * Scrapy 2.7.1
 * Tensorflow 2.12
 * CUDA tool kit 11.8
@@ -142,6 +161,7 @@ cd scrapy/tools/ && python3 [script_name]
 ## Structure
 
 ```
+flask/
 scrapy/
 jupyter/
 env/

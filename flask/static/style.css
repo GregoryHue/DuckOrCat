@@ -1,0 +1,52 @@
+@import './background.css';
+
+.request-title,
+.request-subtitle {
+    text-align: center;
+    color: #E0FBFC;
+}
+
+.request-label {
+    margin-top: 8px;
+}
+
+.request-buttons {
+    width: 100%;
+}
+
+.request-input {
+    display: none;
+}
+
+.request-image {
+    width: 66%;
+    object-fit: contain;
+    display: block;
+    margin: 12px auto;
+}
+
+img {
+
+    border-radius: 50px;
+}
+
+.container {
+    display: table;
+    width: 100%;
+    margin: 5% 10%;
+}
+
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}

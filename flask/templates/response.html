@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class='request-title'>{% block title %} Duck or Cat {% endblock %}</h1>
+    <img class="request-image" id="image" src="{{path_image}}" alt="" />
+    <h3 class='request-subtitle'>{% block subtitle %} I am {{cat_prob}}% sure that this is a cat and {{duck_prob}}% sure that it is a duck {% endblock %}</h3>
+    <div class="request-buttons">
+        <a href="/">
+            <button class="request-submit btn btn-outline-warning" >Try again</button>
+        </a>
+    </div>
+{% endblock %}
