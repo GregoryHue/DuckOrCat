@@ -50,16 +50,16 @@ The model is a CNN classification model, it has the following structure:
 
 Here is the evolution of the accuracy over 25 epochs:
 
-![Accuracy and loss over epochs](https://github.com/GregoryHue/DuckOrCat/tree/main/flask/static/loss_and_acc.png)
+![Accuracy and loss over epochs](https://github.com/GregoryHue/DuckOrCat/blob/main/flask/static/loss_and_acc.png)
 
 Here is the predictions of cats and ducks:
 
-![Cats](https://github.com/GregoryHue/DuckOrCat/tree/main/flask/static/cat_prediction.png?raw=true)
-![Ducks](https://github.com/GregoryHue/DuckOrCat/tree/main/flask/static/duck_prediction.png?raw=true)
+![Cats](https://github.com/GregoryHue/DuckOrCat/blob/main/flask/static/cat_prediction.png?raw=true)
+![Ducks](https://github.com/GregoryHue/DuckOrCat/blob/main/flask/static/duck_prediction.png?raw=true)
 
 And here is the confusion matrix:
 
-![Confusion matrix](https://github.com/GregoryHue/DuckOrCat/tree/main/flask/static/confusion_matrix.png?raw=true)
+![Confusion matrix](https://github.com/GregoryHue/DuckOrCat/blob/main/flask/static/confusion_matrix.png?raw=true)
 
 The model has an accuracy of 98.21%, ***which seems to be very different for the deployed model***.
 
