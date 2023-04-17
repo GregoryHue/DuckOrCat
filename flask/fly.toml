@@ -1,13 +1,10 @@
-# fly.toml file generated for duck-or-cat on 2023-04-16T22:45:53+02:00
+# fly.toml file generated for duck-or-cat on 2023-04-17T14:52:52+02:00
 
 app = "duck-or-cat"
 primary_region = "cdg"
 
-[env]
-  FLASK_APP="main flask run"
-
 [http_service]
-  internal_port = 8000
+  internal_port = 5333
   force_https = true
 
 [checks]

@@ -36,12 +36,15 @@ def response():
             filename = secure_filename(image.filename)
             path_image = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             image.save(path_image)
+            
             image = Image.open(path_image)
             image = image.resize((128, 128))
             image = numpy.expand_dims(image, axis=0)
             image = numpy.array(image)
             image = image/255
             pred = m.predict([image])[0]
+            
+            #pred = [0.04, 0.06] 
             cat_prob = round(pred[0] * 100, 1)
             duck_prob = round(pred[1] * 100, 1)
     return render_template('response.html', path_image=path_image, cat_prob=cat_prob, duck_prob=duck_prob)

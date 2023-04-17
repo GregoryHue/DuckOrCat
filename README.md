@@ -1,6 +1,49 @@
 # DuckOrCat
 
-Duck or Cat is a binary classification model. It classifies pictures of ducks and cats. A Scrapy project is available to download picture for your dataset and modify them if needed.
+Duck or Cat is a binary classification model. It classifies pictures of ducks and cats. 
+
+## Content of this project
+
+This project is split into 3 differents folders:
+
+- `scrapy`: Scrapy project that helps with the creation of a dataset. It massively download pictures of cats and ducks.
+- `jupyter`: Jupyter project that trains and validates the model.
+- `flask`: Flask project that alows the user to try the model.
+
+## Dataset
+
+The dataset contains pictures of cats and ducks, preferably alone and in a natural habbitat. Here is a sample :
+
+*sample needed*
+
+The balance of the dataset is the following:
+
+* train: 9000 cats and 9000 ducks
+* test: 2000 cats and 9000 ducks
+
+## The model
+
+The model is a CNN classification model, it has the following structure:
+
+![Structure of the model](https://i.imgur.com/ebkMGGu.jpg)
+
+## Result
+
+Here is the evolution of the accuracy over 25 epochs:
+
+![Accuracy and loss over epochs](https://github.com/GregoryHue/DuckOrCat/tree/main/flask/static/loss_and_acc.png)
+
+Here is the predictions of cats and ducks:
+
+<div style="white-space: nowrap;">
+<img src="https://github.com/GregoryHue/DuckOrCat/tree/main/flask/static/cat_prediction.png" style="display: inline-block;width:45%;"/><img src="[pic.png](https://github.com/GregoryHue/DuckOrCat/tree/main/flask/static/duck_prediction.png)" style="display: inline-block;width:45%;"/>
+</div>
+
+And here is the confusion matrix:
+
+![Confusion matrix](https://github.com/GregoryHue/DuckOrCat/tree/main/flask/static/confusion_matrix.png)
+
+The model has an accuracy of 98.21%, ***which seems to be very different for the deployed model***.
 
 ## Project setup
 
@@ -89,7 +132,7 @@ conda install -c conda-forge cudatoolkit=11.8.0
 
 Install required librairies:
 ```bash
-cd dev/DuckOrCat/ && pip install -r requirements.txt
+cd dev/DuckOrCat/ && pip install -r flask/requirements.txt
 ```
 
 Set the path variables:
@@ -101,16 +144,6 @@ echo 'CUDNN_PATH=$(dirname $(python -c "import nvidia.cudnn;print(nvidia.cudnn._
 echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/:$CUDNN_PATH/lib' >> $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
 ```
 
-### Install Flyctl (optional):
-
-If you ever wish to push to production, install flyctl with:
-
-```bash
-curl -L https://fly.io/install.sh | sh
-export FLYCTL_INSTALL="/home/$USER/.fly"
-export PATH="$FLYCTL_INSTALL/bin:$PATH"
-```
-
 ## Usage
 
 ### Flask
@@ -119,6 +152,12 @@ To develop the web interface, get into the `flask/` folder and run:
 
 ```bash
 flask --app  main.py --debug run
+```
+
+If you want to run the production version locally Docker instead, you can run:
+
+```bash
+docker build -f Dockerfile -t flask . && docker run -p 8000:8000 -it flask
 ```
 
 ### Jupyter
@@ -167,7 +206,6 @@ jupyter/
 env/
 .gitignore
 README.md
-requirements.txt
 ```
 
 ## References
@@ -183,7 +221,5 @@ requirements.txt
 * [🐈🐕 Cat and Dog Classification](https://www.kaggle.com/code/gcdatkin/cat-and-dog-classification)
 * [Keras CNN Dog or Cat Classification](https://www.kaggle.com/code/uysimty/keras-cnn-dog-or-cat-classification)
 * [TF2 - Tutorials - Keras - Save and Restore Models](https://www.kaggle.com/code/vikramtiwari/tf2-tutorials-keras-save-and-restore-models)
-* [3 Ways to Deploy Machine Learning Models in Production](https://towardsdatascience.com/3-ways-to-deploy-machine-learning-models-in-production-cdba15b00e)
-* [How to Deploy Machine Learning Models](https://towardsdatascience.com/how-to-deploy-machine-learning-models-601f8c13ff45)
-* [A faster way to build and share data apps](https://streamlit.io/)
-* [Quickstart - Installing MLflow](https://mlflow.org/docs/latest/quickstart.html)
+* [How To Make a Web Application Using Flask in Python 3](https://www.digitalocean.com/community/tutorials/how-to-make-a-web-application-using-flask-in-python-3)
+* [How Can You Use TensorFlow with Docker?](https://www.run.ai/guides/tensorflow/tensorflow-with-docker)
