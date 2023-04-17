@@ -44,6 +44,4 @@ def response():
             pred = m.predict([image])[0]
             cat_prob = round(pred[0] * 100, 1)
             duck_prob = round(pred[1] * 100, 1)
-            print(cat_prob, duck_prob)
-            print(path_image)
     return render_template('response.html', path_image=path_image, cat_prob=cat_prob, duck_prob=duck_prob)
