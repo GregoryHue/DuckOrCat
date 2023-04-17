@@ -1,8 +1,31 @@
-# DuckOrCat
+
+<h1>Duck or Cat</h1>
 
 Duck or Cat is a binary classification model. It classifies pictures of ducks and cats. 
 
-## Content of this project
+<h1>Table of Contents</h1>
+
+- [Content of this project](#content-of-this-project)
+- [Dataset](#dataset)
+- [The model](#the-model)
+- [Result](#result)
+- [Project setup](#project-setup)
+  - [Install CUDA drivers on Windows 11:](#install-cuda-drivers-on-windows-11)
+  - [Install CuDNN on WSL2:](#install-cudnn-on-wsl2)
+  - [Install CUDA on WSL2:](#install-cuda-on-wsl2)
+  - [Install Miniconda:](#install-miniconda)
+  - [Disable Miniconda on start-up (optional):](#disable-miniconda-on-start-up-optional)
+  - [Create a conda environement:](#create-a-conda-environement)
+  - [Install librairies:](#install-librairies)
+- [Usage](#usage)
+  - [Flask](#flask)
+  - [Jupyter](#jupyter)
+  - [Scrapy](#scrapy)
+- [Versions](#versions)
+- [Structure](#structure)
+- [References](#references)
+
+# Content of this project
 
 This project is split into 3 differents folders:
 
@@ -10,24 +33,20 @@ This project is split into 3 differents folders:
 - `jupyter`: Jupyter project that trains and validates the model.
 - `flask`: Flask project that alows the user to try the model.
 
-## Dataset
-
-The dataset contains pictures of cats and ducks, preferably alone and in a natural habbitat. Here is a sample :
-
-*sample needed*
+# Dataset
 
 The balance of the dataset is the following:
 
 * train: 9000 cats and 9000 ducks
 * test: 2000 cats and 9000 ducks
 
-## The model
+# The model
 
 The model is a CNN classification model, it has the following structure:
 
 ![Structure of the model](https://i.imgur.com/ebkMGGu.jpg)
 
-## Result
+# Result
 
 Here is the evolution of the accuracy over 25 epochs:
 
@@ -35,23 +54,22 @@ Here is the evolution of the accuracy over 25 epochs:
 
 Here is the predictions of cats and ducks:
 
-<div style="white-space: nowrap;">
-<img src="https://github.com/GregoryHue/DuckOrCat/tree/main/flask/static/cat_prediction.png" style="display: inline-block;width:45%;"/><img src="[pic.png](https://github.com/GregoryHue/DuckOrCat/tree/main/flask/static/duck_prediction.png)" style="display: inline-block;width:45%;"/>
-</div>
+![Cats](https://github.com/GregoryHue/DuckOrCat/tree/main/flask/static/cat_prediction.png?raw=true)
+![Ducks](https://github.com/GregoryHue/DuckOrCat/tree/main/flask/static/duck_prediction.png?raw=true)
 
 And here is the confusion matrix:
 
-![Confusion matrix](https://github.com/GregoryHue/DuckOrCat/tree/main/flask/static/confusion_matrix.png)
+![Confusion matrix](https://github.com/GregoryHue/DuckOrCat/tree/main/flask/static/confusion_matrix.png?raw=true)
 
 The model has an accuracy of 98.21%, ***which seems to be very different for the deployed model***.
 
-## Project setup
+# Project setup
 
-### Install CUDA drivers on Windows 11:
+## Install CUDA drivers on Windows 11:
 
-*empty for now*
+[Here.](https://developer.nvidia.com/cuda-downloads?target_os=Windows&target_arch=x86_64&target_version=11&target_type=exe_local)
 
-### Install CuDNN on WSL2:
+## Install CuDNN on WSL2:
 
 Find the correct version of cuDNN [here](https://developer.nvidia.com/rdp/cudnn-download) then run:
 
@@ -63,7 +81,7 @@ sudo apt-get update
 sudo apt-get -y install libcudnn8 libcudnn8-dev
 ```
 
-### Install CUDA on WSL2:
+## Install CUDA on WSL2:
 
 Delete the old key:
 
@@ -80,7 +98,7 @@ bsudo apt-get update
 sudo apt-get -y install cuda
 ```
 
-### Install Miniconda:
+## Install Miniconda:
 
 Get the correct version of Miniconda [here](https://docs.conda.io/en/latest/miniconda.html) and install it:
 
@@ -89,7 +107,7 @@ wget wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 sudo bash Miniconda3-latest-Linux-x86_64.sh -p /usr/bin/miniconda3
 ```
 
-### Disable Miniconda on start-up (optionnal):
+## Disable Miniconda on start-up (optional):
 
 Get into the Miniconda environement if you aren't already:
 
@@ -102,7 +120,7 @@ Turn off conda on start-up:
 conda config --set auto_activate_base false
 ```
 
-### Create a conda environement:
+## Create a conda environement:
 
 Get into the Miniconda environement if you aren't already:
 
@@ -116,7 +134,7 @@ Create a new conda environement:
 conda create --name env python=3.9
 ```
 
-### Install librairies:
+## Install librairies:
 
 Get in the environement:
 
@@ -144,9 +162,9 @@ echo 'CUDNN_PATH=$(dirname $(python -c "import nvidia.cudnn;print(nvidia.cudnn._
 echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/:$CUDNN_PATH/lib' >> $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
 ```
 
-## Usage
+# Usage
 
-### Flask
+## Flask
 
 To develop the web interface, get into the `flask/` folder and run:
 
@@ -160,7 +178,7 @@ If you want to run the production version locally Docker instead, you can run:
 docker build -f Dockerfile -t flask . && docker run -p 8000:8000 -it flask
 ```
 
-### Jupyter
+## Jupyter
 
 To develop on the model, get into the `jupyter/` folder and run:
 
@@ -168,7 +186,7 @@ To develop on the model, get into the `jupyter/` folder and run:
 jupyter-lab
 ```
 
-### Scrapy
+## Scrapy
 
 To download picture of ducks or cats, get into the `scrapy/` folder and run:
 
@@ -188,7 +206,7 @@ To use any of them, get into the `scrapy/tools/` and run:
 python3 [script_name]
 ```
 
-## Versions
+# Versions
 
 * Windows 11 and WSL2 (Ubuntu 22.04.2 LTS)
 * Python 3.9
@@ -196,8 +214,9 @@ python3 [script_name]
 * Scrapy 2.7.1
 * Tensorflow 2.12
 * CUDA tool kit 11.8
+* Docker version 20.10.24 (optional)
 
-## Structure
+# Structure
 
 ```
 flask/
@@ -208,7 +227,7 @@ env/
 README.md
 ```
 
-## References
+# References
 
 * [Scrapy](https://scrapy.org/)
 * [Item Pipeline](https://docs.scrapy.org/en/latest/topics/item-pipeline.html)
