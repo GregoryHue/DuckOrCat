@@ -172,11 +172,13 @@ To develop the web interface, get into the `flask/` folder and run:
 flask --app  main.py --debug run
 ```
 
-If you want to run the production version locally Docker instead, you can run:
+If you want to run the production version on Docker instead, you can run:
 
 ```bash
 docker build -f Dockerfile -t flask . && docker run -p 8000:8000 -it flask
 ```
+
+Then open [http://localhost:8000/](http://localhost:8000/).
 
 ## Jupyter
 

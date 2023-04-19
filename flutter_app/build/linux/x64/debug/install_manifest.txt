@@ -1,0 +1,11 @@
+/home/ghue/dev/DuckOrCat/flutter_app/build/linux/x64/debug/bundle/flutter_app
+/home/ghue/dev/DuckOrCat/flutter_app/build/linux/x64/debug/bundle/data/icudtl.dat
+/home/ghue/dev/DuckOrCat/flutter_app/build/linux/x64/debug/bundle/lib/libflutter_linux_gtk.so
+/home/ghue/dev/DuckOrCat/flutter_app/build/linux/x64/debug/bundle/data/flutter_assets/kernel_blob.bin
+/home/ghue/dev/DuckOrCat/flutter_app/build/linux/x64/debug/bundle/data/flutter_assets/AssetManifest.json
+/home/ghue/dev/DuckOrCat/flutter_app/build/linux/x64/debug/bundle/data/flutter_assets/fonts/MaterialIcons-Regular.otf
+/home/ghue/dev/DuckOrCat/flutter_app/build/linux/x64/debug/bundle/data/flutter_assets/shaders/ink_sparkle.frag
+/home/ghue/dev/DuckOrCat/flutter_app/build/linux/x64/debug/bundle/data/flutter_assets/FontManifest.json
+/home/ghue/dev/DuckOrCat/flutter_app/build/linux/x64/debug/bundle/data/flutter_assets/NOTICES.Z
+/home/ghue/dev/DuckOrCat/flutter_app/build/linux/x64/debug/bundle/data/flutter_assets/version.json
+/home/ghue/dev/DuckOrCat/flutter_app/build/linux/x64/debug/bundle/data/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
