@@ -2,13 +2,7 @@ import scrapy
 
 from ..items import DuckPictureItem
 
-urls = ['https://www.istockphoto.com/fr/search/more-like-this/155358150?assettype=image&phrase=duck',               # Mallard
-        'https://www.istockphoto.com/fr/search/more-like-this/496630422?assettype=image&phrase=duck'                # Mandarin
-        'https://www.istockphoto.com/fr/search/more-like-this/172684964?assettype=image&phrase=duck'                # Harlequin
-        'https://www.istockphoto.com/fr/search/more-like-this/1264750864?assettype=image&phrase=duck'               # Ruddy
-        'https://www.istockphoto.com/fr/search/more-like-this/643723794?assettype=image&phrase=duck'                # Wood
-        'https://www.istockphoto.com/fr/search/more-like-this/91813584?assettype=image&phrase=duck'                 # Brown-ish with dots duck, idk the origin
-        'https://www.istockphoto.com/fr/search/more-like-this/1092941632?assettype=image&phrase=white%20duck']      # White duck, idk the origin
+urls = ['https://www.istockphoto.com/fr/search/2/image?family=creative&phrase=duck']
 
 
 class DuckSpider(scrapy.Spider):
