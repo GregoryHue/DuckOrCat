@@ -150,7 +150,7 @@ conda install -c conda-forge cudatoolkit=11.8.0
 
 Install required librairies:
 ```bash
-cd dev/DuckOrCat/ && pip install -r flask/requirements.txt
+cd dev/DuckOrCat/ && pip install -r scrapy/requirements.txt
 ```
 
 Set the path variables:
@@ -164,7 +164,61 @@ echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/:$CUDNN_PATH/lib
 
 # Usage
 
+This project is supposed to be used in this order :
+
+1. Scrapy to download/generate the dataset
+2. Jupyter to create and train the model 
+3. Flask to deploy the model in real conditions.
+
+But since the model is already built and stored on github at `flask/static/model.h5`, it is possible to skip step 1 and 2.
+
+## Scrapy
+
+Get into the Miniconda environement if you aren't already:
+
+```bash
+source /usr/bin/miniconda3/bin/activate
+```
+
+To download picture of ducks or cats, get into the `scrapy/` folder and run:
+
+```bash
+scrapy crawl [duck|cat]
+```
+
+Some scripts are available in `scrapy/tools/`:
+
+* `delete_duplicate.py`: delete every picture duplicates in the dataset folder.
+* `rename.py`: rename every pictures of a folder following a pattern.
+* `resize.py`: to save on storage and ressources during the training, resize every pictures to be a maximum of 1024 pixels of width and height.
+
+To use any of them, get into the `scrapy/tools/` and run:
+
+```bash
+python3 [script_name]
+```
+
+## Jupyter
+
+Get into the Miniconda environement if you aren't already:
+
+```bash
+source /usr/bin/miniconda3/bin/activate
+```
+
+To develop on the model, get into the `jupyter/` folder and run:
+
+```bash
+jupyter-lab
+```
+
 ## Flask
+
+Get into the Miniconda environement if you aren't already:
+
+```bash
+source /usr/bin/miniconda3/bin/activate
+```
 
 To develop the web interface, get into the `flask/` folder and run:
 
@@ -179,34 +233,6 @@ docker build -f Dockerfile -t flask . && docker run -p 8000:8000 -it flask
 ```
 
 Then open [http://localhost:8000/](http://localhost:8000/).
-
-## Jupyter
-
-To develop on the model, get into the `jupyter/` folder and run:
-
-```bash
-jupyter-lab
-```
-
-## Scrapy
-
-To download picture of ducks or cats, get into the `scrapy/` folder and run:
-
-```bash
-scrapy crawl [duck|cat]
-```
-
-Some scripts are available in `scrapy/tools/`:
-
-* `delete_duplicate.py`: delete every picture duplicates in the dataset folder.
-* `rename.py`: rename every pictures of a folder following a pattern.
-* `resize.py`: to save on storage and RAM, resize every pictures to be a maximum of 1024 pixels of width and height.
-
-To use any of them, get into the `scrapy/tools/` and run:
-
-```bash
-python3 [script_name]
-```
 
 # Versions
 
