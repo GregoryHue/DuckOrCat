@@ -12,6 +12,8 @@ env/
 **/.buildozer/
 **/bin/
 
+**/jupyter/model.h5
+
 __init__.py
 
 !duck-example.jpg
