@@ -78,7 +78,7 @@ wget https://developer.nvidia.com/downloads/compute/cudnn/secure/8.9.0/local_ins
 sudo dpkg -i cudnn-local-repo-ubuntu2204-8.9.0.131_1.0-1_amd64.deb
 sudo cp /var/cudnn-local-repo-ubuntu2204-8.9.0.131/cudnn-local-D7522631-keyring.gpg /usr/share/keyrings/
 sudo apt-get update
-sudo apt-get -y install libcudnn8 libcudnn8-dev
+sudo apt-get -y install libcudnn8 libcudnn8-dev nvidia-cudnn
 ```
 
 ## Install CUDA on WSL2:
@@ -103,8 +103,13 @@ sudo apt-get -y install cuda
 Get the correct version of Miniconda [here](https://docs.conda.io/en/latest/miniconda.html) and install it:
 
 ```bash
-wget wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 sudo bash Miniconda3-latest-Linux-x86_64.sh -p /usr/bin/miniconda3
+```
+
+Then run:
+```bash
+conda init
 ```
 
 ## Disable Miniconda on start-up (optional):
@@ -174,6 +179,19 @@ But since the model is already built and stored on github at `flask/static/model
 
 ## Scrapy
 
+<details>
+<summary>Thoughts process</summary>
+
+Scrapy will massively download pictures from `istockphoto.com`.
+
+The problem is that if you ask for duck or cat pictures on this site (or any free image bank), you often get wrong pictures (aka plastic ducks, cooked ducks, cats with dogs, pushies of cats, drawing of cats, etc ...), and it's rather impossible to handpick yourself several thousands of pictures.
+
+Instead, you can make a search by image to get way better results and download all of them. So I searched for several breeds of cats and ducks, so that my dataset may have some variety in it.
+
+If you want to understand the difference, go to `istockphoto.com` and search for `duck`. Then compare the results to [this](https://www.istockphoto.com/fr/search/more-like-this/155358150?assettype=image&phrase=duck), which is a search image for a mallard duck. It's also the first of 7 URLs you can find in `scrapy/downloader/spiders/duck.py`.
+
+</details>
+
 Get into the Miniconda environement if you aren't already:
 
 ```bash
@@ -200,7 +218,18 @@ python3 [script_name]
 
 ## Jupyter
 
-Get into the Miniconda environement if you aren't already:
+<details>
+<summary>Thoughts process</summary>
+
+Scrapy will train the model on the dataset (given that you have manually move the dataset folder from the scrapy folder to the jupyter folder), and save the model as a `.h5` file, which will be useful later.
+
+The training steps are very inspired by [Keras CNN Dog or Cat Classification](https://www.kaggle.com/code/uysimty/keras-cnn-dog-or-cat-classification).
+
+And although it has a 98% accuracy, the model in real condition is far from this result. It's probably due to the fact that Scrapy downloads the dataset by breeds of cats and ducks, which means that if you pass a breed of cat that I didn't get with Scrapy, the model will be confused.
+
+</details>
+
+Get into the Miniconda environment if you aren't already:
 
 ```bash
 source /usr/bin/miniconda3/bin/activate
@@ -213,6 +242,15 @@ jupyter-lab
 ```
 
 ## Flask
+
+<details>
+<summary>Thoughts process</summary>
+
+Flask will take the `model.h5` and expose it on a simple web interface. 
+
+I wanted to deploy this on [Fly.io](https://fly.io/), sadly it would costs me too much as a model needs a lot of ressources. So it's possible to test it only locally for now.
+
+</details>
 
 Get into the Miniconda environement if you aren't already:
 

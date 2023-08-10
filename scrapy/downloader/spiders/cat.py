@@ -2,12 +2,18 @@ import scrapy
 
 from ..items import DuckPictureItem
 
-urls = ['https://www.istockphoto.com/fr/search/2/image?family=creative&phrase=cat']
+urls = ['https://www.istockphoto.com/fr/search/more-like-this/171583931?assettype=image&phrase=cat',                # Persian
+        'https://www.istockphoto.com/fr/search/more-like-this/1417420135?assettype=image&phrase=cat'                # York Chocolate
+        'https://www.istockphoto.com/fr/search/more-like-this/491679239?assettype=image&phrase=cat'                 # Tonkinese
+        'https://www.istockphoto.com/fr/search/more-like-this/1145889109?assettype=image&phrase=cat'                # British Shorthair
+        'https://www.istockphoto.com/fr/search/more-like-this/523015577?assettype=image&phrase=cat'                 # Somali
+        'https://www.istockphoto.com/fr/search/more-like-this/1071204136?assettype=image&phrase=cat'                # Toyger
+        'https://www.istockphoto.com/fr/search/more-like-this/623368092?assettype=image&phrase=cat']                # Birman
 
 class DuckSpider(scrapy.Spider):
     name = 'cat'
     allowed_domains = ['www.unsplash.com']
-    start_urls = urls
+    start_urls = [ j + '&page=' + str(i) for j in urls for i in range(1, 100)]
     
 
     def parse(self, response):
