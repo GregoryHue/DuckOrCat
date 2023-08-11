@@ -3,6 +3,8 @@
 
 Duck or Cat is a binary classification model. It classifies pictures of ducks and cats. 
 
+![Screenshot DuckOrCat](https://github.com/GregoryHue/DuckOrCat/blob/main/flask/static/screenshot_duck_or_cat.jpeg?raw=true)
+
 <h1>Table of Contents</h1>
 
 - [Content of this project](#content-of-this-project)
@@ -13,6 +15,7 @@ Duck or Cat is a binary classification model. It classifies pictures of ducks an
   - [Install CUDA drivers on Windows 11:](#install-cuda-drivers-on-windows-11)
   - [Install CuDNN on WSL2:](#install-cudnn-on-wsl2)
   - [Install CUDA on WSL2:](#install-cuda-on-wsl2)
+  - [Install TensorRT:](#install-tensorrt)
   - [Install Miniconda:](#install-miniconda)
   - [Disable Miniconda on start-up (optional):](#disable-miniconda-on-start-up-optional)
   - [Create a conda environement:](#create-a-conda-environement)
@@ -98,6 +101,17 @@ bsudo apt-get update
 sudo apt-get -y install cuda
 ```
 
+## Install TensorRT:
+
+Get the correct version of TensorRT [here](https://developer.nvidia.com/tensorrt) and install it:
+
+```bash
+sudo dpkg -i nv-tensorrt-local-repo-ubuntu2204-8.6.1-cuda-12.0_1.0-1_amd64.deb
+sudo cp /var/nv-tensorrt-local-repo-ubuntu2204-8.6.1-cuda-12.0/*-keyring.gpg /usr/share/keyrings/
+sudo apt-get update
+sudo apt-get install tensorrt
+```
+
 ## Install Miniconda:
 
 Get the correct version of Miniconda [here](https://docs.conda.io/en/latest/miniconda.html) and install it:
@@ -110,17 +124,6 @@ sudo bash Miniconda3-latest-Linux-x86_64.sh -p /usr/bin/miniconda3
 Then run:
 ```bash
 conda init
-```
-
-## Install TensorRT:
-
-Get the correct version of TensorRT [here](https://developer.nvidia.com/tensorrt) and install it:
-
-```bash
-sudo dpkg -i nv-tensorrt-local-repo-ubuntu2204-8.6.1-cuda-12.0_1.0-1_amd64.deb
-sudo cp /var/nv-tensorrt-local-repo-ubuntu2204-8.6.1-cuda-12.0/*-keyring.gpg /usr/share/keyrings/
-sudo apt-get update
-sudo apt-get install tensorrt
 ```
 
 ## Disable Miniconda on start-up (optional):
@@ -184,11 +187,9 @@ This project works in this order :
 
 1. Scrapy to download/generate a dataset
 2. Jupyter to create and train the model 
-3. Flask to deploy the model in real conditions (see picture bellow).
+3. Flask to deploy the model in real conditions.
 
 But since the model is already built and stored on github at `flask/model.h5`, it's possible to skip step 1 and 2.
-
-![Screenshot DuckOrCat](https://github.com/GregoryHue/DuckOrCat/blob/main/flask/static/screenshot_duck_or_cat.jpeg?raw=true)
 
 ## Scrapy
 
