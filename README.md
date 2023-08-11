@@ -188,7 +188,7 @@ This project works in this order :
 
 But since the model is already built and stored on github at `flask/model.h5`, it's possible to skip step 1 and 2.
 
-![Screenshot DuckOrCat](https://github.com/GregoryHue/DuckOrCat/blob/main/flask/static/screenshot_duck_or_cat.png?raw=true)
+![Screenshot DuckOrCat](https://github.com/GregoryHue/DuckOrCat/blob/main/flask/static/screenshot_duck_or_cat.jpeg?raw=true)
 
 ## Scrapy
 
