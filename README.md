@@ -112,6 +112,17 @@ Then run:
 conda init
 ```
 
+## Install TensorRT:
+
+Get the correct version of TensorRT [here](https://developer.nvidia.com/tensorrt) and install it:
+
+```bash
+sudo dpkg -i nv-tensorrt-local-repo-ubuntu2204-8.6.1-cuda-12.0_1.0-1_amd64.deb
+sudo cp /var/nv-tensorrt-local-repo-ubuntu2204-8.6.1-cuda-12.0/*-keyring.gpg /usr/share/keyrings/
+sudo apt-get update
+sudo apt-get install tensorrt
+```
+
 ## Disable Miniconda on start-up (optional):
 
 Get into the Miniconda environement if you aren't already:
@@ -169,13 +180,15 @@ echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/:$CUDNN_PATH/lib
 
 # Usage
 
-This project is supposed to be used in this order :
+This project works in this order :
 
-1. Scrapy to download/generate the dataset
+1. Scrapy to download/generate a dataset
 2. Jupyter to create and train the model 
-3. Flask to deploy the model in real conditions.
+3. Flask to deploy the model in real conditions (see picture bellow).
 
-But since the model is already built and stored on github at `flask/static/model.h5`, it is possible to skip step 1 and 2.
+But since the model is already built and stored on github at `flask/model.h5`, it's possible to skip step 1 and 2.
+
+![Screenshot DUckOrCat](https://github.com/GregoryHue/DuckOrCat/blob/main/flask/static/screenshot_duck_or_cat.png?raw=true)
 
 ## Scrapy
 
@@ -186,7 +199,7 @@ Scrapy will massively download pictures from `istockphoto.com`.
 
 The problem is that if you ask for duck or cat pictures on this site (or any free image bank), you often get wrong pictures (aka plastic ducks, cooked ducks, cats with dogs, pushies of cats, drawing of cats, etc ...), and it's rather impossible to handpick yourself several thousands of pictures.
 
-Instead, you can make a search by image to get way better results and download all of them. So I searched for several breeds of cats and ducks, so that my dataset may have some variety in it.
+Instead, you can make a search **by image** to get way better results and download all of them. I searched for several breeds of cats and ducks, so that my dataset may have some variety in it.
 
 If you want to understand the difference, go to `istockphoto.com` and search for `duck`. Then compare the results to [this](https://www.istockphoto.com/fr/search/more-like-this/155358150?assettype=image&phrase=duck), which is a search image for a mallard duck. It's also the first of 7 URLs you can find in `scrapy/downloader/spiders/duck.py`.
 
@@ -278,8 +291,9 @@ Then open [http://localhost:8000/](http://localhost:8000/).
 * Python 3.9
 * Flask 2.2.3
 * Scrapy 2.7.1
-* Tensorflow 2.12
-* CUDA tool kit 11.8
+* Tensorflow 2.13
+* CuDNN 8.9.4
+* CUDA 12
 * Docker version 20.10.24 (optional)
 
 # Structure
