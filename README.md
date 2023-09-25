@@ -47,7 +47,7 @@ The balance of the dataset is the following:
 
 The model is a CNN classification model, it has the following structure:
 
-![Structure of the model](https://i.imgur.com/ebkMGGu.jpg)
+![Structure of the model](https://github.com/GregoryHue/DuckOrCat/blob/main/flask/static/layers.jpg?raw=true)
 
 # Result
 
